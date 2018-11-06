@@ -1,4 +1,4 @@
-open Graph
+	open Graph
 open Printf
     
 type path = string
@@ -29,6 +29,22 @@ let write_file path graph =
   
   close_out ff ;
   ()
+
+(* Path is the name of the .txt we want to build 
+*)
+let export path graph = 
+
+	let ff = open_out path in
+	fprintf ff "digraph G {\n" ;
+	(* LR pour Left to Right *)
+	fprintf ff "\trankdir=LR\n" ;
+	fprintf ff "\tsize=\"5\";\n";
+	fprintf ff "\tnode [shape = circle]\n";
+	
+	v_iter graph (fun id out -> List.iter (fun (id2, lbl) -> fprintf ff "\t%s -> %s [ label = \"%s\" ];\n" id id2 lbl) out);
+	fprintf ff "}";
+	close_out ff ;
+	()
 
 (* Reads a line with a node. *)
 let read_node graph line =
