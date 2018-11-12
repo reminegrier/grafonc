@@ -14,3 +14,5 @@ type id = string
  *  forbidden is a list of forbidden nodes (they have already been visited)
  *)
 val find_path: int graph -> id list -> id -> id -> path option
+
+val print_graph_path: path option -> unit

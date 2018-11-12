@@ -24,7 +24,9 @@ let () =
 
   let graphTransform = map graph (fun x -> int_of_string x) in
 
-  let chemin = find_path graphTransform [] "0" "3" in
+  let chemin = find_path graphTransform [] _source _sink in
+	
+	print_graph_path chemin ;
 
   (* Rewrite the graph that has been read. *)
   let () = Gfile.write_file outfile (Graph.map graph (fun x -> string_of_int ((int_of_string x) +  1))) in
