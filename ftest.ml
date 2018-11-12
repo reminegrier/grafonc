@@ -1,4 +1,5 @@
 open Graph
+open Fordfulkerson
 
 let () =
 
@@ -8,9 +9,11 @@ let () =
       exit 0
     end ;
 
+
+
   let infile = Sys.argv.(1)
   and outfile = Sys.argv.(4)
-  
+
   (* These command-line arguments are not used for the moment. *)
   and _source = Sys.argv.(2)
   and _sink = Sys.argv.(3)
@@ -19,9 +22,11 @@ let () =
   (* Open file *)
   let graph = Gfile.from_file infile in
 
+  let graphTransform = map graph (fun x -> int_of_string x) in
+
+  let chemin = find_path graphTransform [] "0" "3" in
+
   (* Rewrite the graph that has been read. *)
-  let () = Gfile.write_file outfile graph in
+  let () = Gfile.write_file outfile (Graph.map graph (fun x -> string_of_int ((int_of_string x) +  1))) in
 
-  ()
-
-
+    ()
