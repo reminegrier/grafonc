@@ -31,6 +31,22 @@ let rec find_path graph forbidden src dest =
 		
 		in loop arcs
 ;;
+
+let minimal_stream graph path = 
+	let rec loop path acu = match path with
+	| [] | _ :: [] -> acu
+	| x :: y :: rest -> 
+		begin match (find_arc graph x y) with
+			| None -> assert false
+			| Some value -> if value < acu then loop (y :: rest) value else loop (y :: rest) acu
+		end
+	in match path with
+		| None -> 0
+		| Some x -> loop x max_int
+;;
+
+
+
 		
 
 

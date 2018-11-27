@@ -25,10 +25,12 @@ let () =
   let graphTransform = map graph (fun x -> int_of_string x) in
 
   let chemin = find_path graphTransform [] _source _sink in
+	let flot = minimal_stream graphTransform chemin in
+	Printf.printf "%d\n" flot;
 	
 	print_graph_path chemin ;
 
   (* Rewrite the graph that has been read. *)
-  let () = Gfile.write_file outfile (Graph.map graph (fun x -> string_of_int ((int_of_string x) +  1))) in
+  let () = Gfile.write_file outfile (Graph.map graph (fun x -> string_of_int ((int_of_string x)))) in
 
     ()
