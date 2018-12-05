@@ -46,6 +46,41 @@ let minimal_stream graph path =
 ;;
 
 
+let add_n graph id outs =
+	add_node graph id
+;;
+
+(*
+let add_a graph id outs =
+	match outs with
+		| [] -> 
+		| (id_dest, etiquette) :: rest -> add_arc graph id id_dest etiquette
+;;*)
+
+let add_arc_delta graph x y delta = 
+	match (find_arc graph x y) with
+		| None -> add_arc graph x y delta
+		| Some lbl -> add_arc graph x y (lbl + delta)
+
+;;
+
+let build_difference_graph graph lepath flot_min =
+	(* let graph1 = v_fold graph add_n empty_graph
+	in let graph2 = v_fold graph add_a graph1 in *)
+	let rec loop graph path = 
+		match path with 
+			| x :: [] -> graph
+			| [] -> graph
+			| x :: y :: rest -> let graph3 = add_arc_delta graph x y (-flot_min) in
+								let graph4 = add_arc_delta graph3 y x flot_min in
+								loop graph4 (y::rest)
+	in 
+		match lepath with 
+			| None -> assert false
+			| Some xPath -> loop graph xPath
+;;
+			
+
 
 		
 

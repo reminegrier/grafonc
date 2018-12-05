@@ -22,13 +22,16 @@ let () =
   (* Open file *)
   let graph = Gfile.from_file infile in
 
+
   let graphTransform = map graph (fun x -> int_of_string x) in
 
+  
   let chemin = find_path graphTransform [] _source _sink in
-	let flot = minimal_stream graphTransform chemin in
-	Printf.printf "%d\n" flot;
+  let flot = minimal_stream graphTransform chemin in
+  let graph2 = build_difference_graph graphTransform chemin flot in
 	
-	print_graph_path chemin ;
+	Gfile.export outfile (map graph2 (fun x -> string_of_int x));
+	
 
   (* Rewrite the graph that has been read. *)
   let () = Gfile.write_file outfile (Graph.map graph (fun x -> string_of_int ((int_of_string x)))) in

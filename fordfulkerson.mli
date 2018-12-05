@@ -18,3 +18,7 @@ val find_path: int graph -> id list -> id -> id -> path option
 val print_graph_path: path option -> unit
 
 val minimal_stream: int graph -> path option -> int
+
+val add_arc_delta: int graph -> id -> id -> int -> int graph
+
+val build_difference_graph: int graph -> path option ->  int -> int graph
