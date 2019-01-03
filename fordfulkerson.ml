@@ -95,14 +95,14 @@ let fordfulkerson graph lepath source sink =
 	in loop graph lepath 1
 ;;
 
-let flotfinal graph sink =
+(*let flotfinal graph sink =
 	let arcs = out_arcs graph sink in
 	let rec loop arcs total = 
 		match arcs with
 			| (id, x) :: rest 	-> loop rest (total+x)
 			| [] 				-> total
 		
-	in loop arcs 0 
+	in loop arcs 0 *)
 
 
 
