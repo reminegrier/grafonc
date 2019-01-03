@@ -19,6 +19,7 @@ let rec find_path graph forbidden src dest =
 		let arcs = out_arcs graph src 
 		in
 		let rec loop = function
+				| (id, 0) :: rest -> loop rest
 				| (id, _) :: rest 	-> 
 					if (not (List.mem id forbidden)) then
 						begin match (find_path graph (src::forbidden) id dest) with
@@ -79,7 +80,30 @@ let build_difference_graph graph lepath flot_min =
 			| None -> assert false
 			| Some xPath -> loop graph xPath
 ;;
-			
+
+let fordfulkerson graph lepath source sink =
+	let rec loop graph path iteration =  
+		match path with 
+			| None -> graph
+			| Some chemin -> 	let flot = minimal_stream graph path in
+								let graph2 = build_difference_graph graph path flot in
+  								let path2 = find_path graph2 [] source sink in
+  								Printf.printf "Itération n°%d :\n" iteration;
+  								print_graph_path path;
+  								Printf.printf "Flot minimal : %d\n" flot;
+								loop graph2 path2 (iteration+1)
+	in loop graph lepath 1
+;;
+
+let flotfinal graph sink =
+	let arcs = out_arcs graph sink in
+	let rec loop arcs total = 
+		match arcs with
+			| (id, x) :: rest 	-> loop rest (total+x)
+			| [] 				-> total
+		
+	in loop arcs 0 
+
 
 
 		
