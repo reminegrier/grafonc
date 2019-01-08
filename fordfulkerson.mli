@@ -25,4 +25,4 @@ val build_difference_graph: int graph -> path option ->  int -> int graph
 
 val fordfulkerson: int graph -> path option -> id -> id -> int graph
 
-val flotfinal: int graph -> id -> int
+(*val flotfinal: int graph -> id -> int*)
