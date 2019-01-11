@@ -3,8 +3,6 @@ open Graph
 type path = id list
 type id = string
 
-type retourAlgo = (int graph * int)
-
 
 (* Fonction d'affichage d'un chemin *)
 let rec print_graph_path = function 
@@ -113,15 +111,6 @@ let fordfulkerson graph lepath source sink =
 								loop (graph2, flot+flotMin) path2 (iteration+1)
 	in loop (graph, 0) lepath 1
 ;;
-
-(*let flotfinal graph sink =
-	let arcs = out_arcs graph sink in
-	let rec loop arcs total = 
-		match arcs with
-			| (id, x) :: rest 	-> loop rest (total+x)
-			| [] 				-> total
-		
-	in loop arcs 0 *)
 
 
 
