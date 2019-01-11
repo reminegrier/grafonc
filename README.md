@@ -1,6 +1,6 @@
 # Peut-on me livrer les pizzas que j'ai commandées ?
 
-Guy raffole des pizzas. Souvent, il en commande des quantités astronomiques pour lui et tout ses amis. Il existe plusieurs pizzérias dans la région, réparties sur différentes villes.
+Guy raffole des pizzas. Souvent, il en commande des quantités astronomiques pour lui et tous ses amis. Il existe plusieurs pizzérias dans la région, réparties sur différentes villes.
 
 Ces villes sont représentées par des sommets dans notre graphes. Entre ces villes, il existe des routes, plus ou moins accidentées. Ces routes sont représentées par les arcs. La capacité des arcs correspond au nombre de pizzas qu'un livreur peut transporter en un seul trajet sur la route (plus la route est accidentée, moins on y transportera de pizzas pour ne pas les faire tomber !).
 
