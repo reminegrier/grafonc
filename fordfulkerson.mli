@@ -23,6 +23,6 @@ val add_arc_delta: int graph -> id -> id -> int -> int graph
 
 val build_difference_graph: int graph -> path option ->  int -> int graph
 
-val fordfulkerson: int graph -> path option -> id -> id -> int graph
+val fordfulkerson: int graph -> path option -> id -> id -> (int graph * int)
 
 (*val flotfinal: int graph -> id -> int*)

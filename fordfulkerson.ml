@@ -3,6 +3,8 @@ open Graph
 type path = id list
 type id = string
 
+type retourAlgo = (int graph * int)
+
 
 (* Fonction d'affichage d'un chemin *)
 let rec print_graph_path = function 
@@ -99,17 +101,17 @@ let build_difference_graph graph lepath flot_min =
 (* Fonction faisant tourner l'algorithme de Ford Fulkerson entre les noeuds source et sink *)
 (* lepath ne peut être vide, cas traité dans ftest.ml *)
 let fordfulkerson graph lepath source sink =
-	let rec loop graph path iteration =  
+	let rec loop (graph, flot) path iteration =  
 		match path with 
-			| None -> graph
-			| Some chemin -> 	let flot = minimal_stream graph path in
-								let graph2 = build_difference_graph graph path flot in
+			| None -> (graph, flot)
+			| Some chemin -> 	let flotMin = minimal_stream graph path in
+								let graph2 = build_difference_graph graph path flotMin in
   								let path2 = find_path graph2 [] source sink in
   								Printf.printf "Itération n°%d :\n" iteration;
   								print_graph_path path;
-  								Printf.printf "Flot minimal : %d\n" flot;
-								loop graph2 path2 (iteration+1)
-	in loop graph lepath 1
+  								Printf.printf "Flot minimal : %d\n" flotMin;
+								loop (graph2, flot+flotMin) path2 (iteration+1)
+	in loop (graph, 0) lepath 1
 ;;
 
 (*let flotfinal graph sink =

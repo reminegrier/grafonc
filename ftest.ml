@@ -26,10 +26,11 @@ let () =
   let chemin = find_path graphTransform [] _source _sink in
   match chemin with 
   	| None -> assert false
-  	| Some path -> let graph2 = fordfulkerson graphTransform chemin _source _sink
+  	| Some path -> let (graph2, flotFinal) = fordfulkerson graphTransform chemin _source _sink
   in
   (*let total = flotfinal graph2 _sink in
   Printf.printf "Fin de l'algorithme - Flot final : %d\n%!" total;*)
+  Printf.printf "Flot final maximal : %d\n" flotFinal;
   let finalgraph = map graph2 (fun x -> string_of_int x) in
 
   (*let flot = minimal_stream graphTransform chemin in
