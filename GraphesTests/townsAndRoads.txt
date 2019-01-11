@@ -1,0 +1,42 @@
+town Alcombey
+town Macclesfield
+town Ruthorham
+town Ilfracombe
+town Arkney
+town Northbury
+town Penshaw
+town Lindow
+town Skystead
+
+road "55" Alcombey Macclesfield
+road "48" Alcombey Ruthorham
+road "63" Alcombey Arkney
+
+road "62" Macclesfield Ruthorham
+road "43" Macclesfield Ilfracombe
+
+road "62" Ruthorham Ilfracombe
+
+road "7" Ilfracombe Alcombey
+road "45" Ilfracombe Arkney
+road "58" Ilfracombe Lindow
+road "29" Ilfracombe Skystead
+
+road "36" Arkney Macclesfield
+road "20" Arkney Penshaw
+road "37" Arkney Lindow
+
+road "19" Northbury Alcombey
+road "23" Northbury Macclesfield
+road "55" Northbury Ruthorham
+
+road "37" Penshaw Alcombey
+road "41" Penshaw Ruthorham
+road "12" Penshaw Northbury
+
+road "38" Lindow Macclesfield
+road "59" Lindow Skystead
+
+road "31" Skystead Penshaw
+road "5" Skystead Macclesfield
+road "27" Skystead Arkney
