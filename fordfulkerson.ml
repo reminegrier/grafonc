@@ -55,18 +55,6 @@ let minimal_stream graph path =
 		| Some x -> loop x max_int
 ;;
 
-
-(*let add_n graph id outs =
-	add_node graph id
-;;*)
-
-(*
-let add_a graph id outs =
-	match outs with
-		| [] -> 
-		| (id_dest, etiquette) :: rest -> add_arc graph id id_dest etiquette
-;;*)
-
 (* Fonction permettant d'ajouter/modifier les arcs parcourus dans le chemin
 du graphe d'écart *)
 let add_arc_delta graph x y delta = 
